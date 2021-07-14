@@ -1,0 +1,26 @@
+server:
+  port: 8887
+
+spring:
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    lettuce:
+      pool:
+        max-active: ${REDIS_POOL_MAX_ACTIVE}
+        min-idle: 2
+        max-idle: ${REDIS_POOL_MAX_IDLE}
+        max-wait: -1ms
+      shutdown-timeout: 100ms
+    timeout: 20000
+    database: ${REDIS_BOT_DB}
+
+rqueue:
+  scheduler:
+    delayed:
+      message:
+        time:
+          interval: 1000
+  message:
+    durability: 60
+    durability.in-terminal-state: 60
